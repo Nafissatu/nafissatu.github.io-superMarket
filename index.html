@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body>
+  <header>
+    <div class ="header-1">
+    <image src="logo_epicerie.PNG">
+  </header>
+
+  <!-- This web page is inspired by Caroline Barriere's webpage at https://raw.githubusercontent.com/carolinebarriere/carolinebarriere.github.io/master/SEG3125-Module2-Grocery -->
+
+  <!-- Tab links, each one with an onclick event associated with it -->
+  <div class="tab">
+      <button id="ClientTab" class="tablinks active" onclick="openInfo('Client')" >Client</button>
+      <button id="ProductsTab" class="tablinks" onclick="openInfo('Products')">Products</button>
+      <button id="CartTab" class="tablinks notification-anchor" onclick="openInfo('Cart')">Cart
+        <span class="notification" id="cart-notification"></span>
+      </button>
+  </div>
+
+  <div class="page">
+
+    <!-- Tab content -->
+    <div id="Client" class="tabcontent" style="display: flex;">
+      <h1 class="with-subtitle">Client Information</h1>
+      <p class="subtitle">Tell us a bit about you.<br>At Naf-Naf SuperMarket we can serve you based on your preferences!</p>
+      <p class="no-bottom-margin">Select your category:</p>
+      <div id="dietOptions">
+        <label class="diet-option-container">
+          <input type="checkbox" value="LactoseFree" id="lactoseFree" onchange="populateListProductChoices('dietOptions', 'displayProduct')" />
+          <div class="content">
+            <span class="text">Lactose Free</span>
+            <span class="checkmark"></span>
+          </div>
+        </label>
+        <label class="diet-option-container">
+          <input type="checkbox" value="NutsFree" id="nutsFree" onchange="populateListProductChoices('dietOptions', 'displayProduct')" />
+          <div class="content">
+            <span class="text">Nuts Free</span>
+            <span class="checkmark"></span>
+          </div>
+        </label>
+        <label class="diet-option-container">
+          <input type="checkbox" value="Organic" id="organicOnly" onchange="populateListProductChoices('dietOptions', 'displayProduct')" />
+          <div class="content">
+            <span class="text">Organic Products </span>
+            <span class="checkmark"></span>
+          </div>
+        </label>
+        <br />
+      </div>
+      <br />
+      <button onclick="openInfo('Products')">Go ></button>
+    </div>
+
+    <div id="Products" class="tabcontent">
+      <h1 class="with-subtitle">Your targeted products</h1>
+      <p class="subtitle">We preselected products based on your restrictions.</p>
+      <p>Choose items to buy:</p>
+      <div id="displayProduct"></div>
+      <br />
+      <button id="addCart" type="button" class="block" onclick="selectedItems()">
+        Add selected items to cart.
+      </button>
+    </div>
+
+    <div id="Cart" class="tabcontent">
+      <h1 class="with-subtitle">Cart</h1>
+      <p class="subtitle">Here is your cart.</p>
+      <p class="no-bottom-margin">You selected: </p>
+      <div id="cart-items"></div>
+      <p><strong>Total Price: </strong><span id="total-price">0</span>$</p>
+      <div id="displayCart"></div>
+    </div>
+
+  </div>
+
+  <footer>
+      <p>Site Cree  Nafissatu </p>
+  </footer>
+
+  <script src="groceries.js"></script>
+  <script src="main.js"></script>
+  <script>
+    populateListProductChoices('dietOptions', 'displayProduct')
+    selectedItems()
+  </script>
+
+</body>
+</html>
